@@ -7,6 +7,7 @@ import blogRoute from './Route/blog.route.js'
 import userRoute from './Route/auth.route.js'
 import dotenv from 'dotenv'
 import cors from 'cors'
+import { fileURLToPath } from "url";
 
 const app = express()
 dotenv.config()
@@ -17,6 +18,13 @@ const port = process.env.PORT || 3000
 app.use(express.json())
 connectToDb()
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.get("/", (req, res) => {
+  app.use(express.static(path.resolve(__dirname, "frontend", "dist")));
+  res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+});
 
 
 // Configure multer storage for image uploads

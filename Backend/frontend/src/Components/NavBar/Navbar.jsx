@@ -4,7 +4,6 @@ import { FaBars } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 
 
-
 function Navbar() {
 
   const [hamburger, setHamburger] = useState(false)
@@ -52,18 +51,18 @@ function Navbar() {
           </nav>
 
           <nav className="max-sm:hidden" >
-            <a href="/" className="mx-4 hover:underline">
+            <Link to='/' className="mx-4 hover:underline">
               Home
-            </a>
-            <a href="/exploreblogs" className="mx-4 hover:underline">
+            </Link>
+            <Link to="/exploreblogs" className="mx-4 hover:underline">
               Blogs
-            </a>
-            <a href="/about" className="mx-4 hover:underline">
+            </Link>
+            <Link to="/about" className="mx-4 hover:underline">
               About
-            </a>
-            <a href="/contact" className="mx-4 hover:underline">
+            </Link>
+            <Link to="/contact" className="mx-4 hover:underline">
               Contact
-            </a>
+            </Link>
             {
               localStorage.getItem('auth-token') ? 
                <button className="bg-[#FF4757] text-[#fff] px-4 py-2 rounded-md font-semibold hover:bg-[#E63946] transition duration-300" 

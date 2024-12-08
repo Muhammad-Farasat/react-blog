@@ -10,13 +10,12 @@ const AdminLogin = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const url = import.meta.env.VITE_BACKEND_URL
 
   const adminLoginApi = async(e) =>{
     
     e.preventDefault()
     
-    const login = await fetch(`${url}/adminlogin`,{
+    const login = await fetch(`${window.location.origin}/adminlogin`,{
         method: 'POST',
         headers: {
             Accept: 'application/json',

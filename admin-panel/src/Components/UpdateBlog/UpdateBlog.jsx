@@ -7,12 +7,11 @@ function UpdateBlog() {
 
     const {id} = useParams()
 
-  const url = import.meta.env.VITE_BACKEND_URL
 
 
     const fetchBlog = async() =>{
         try {            
-            const blogResponse = await fetch(`${url}/blog/${id}`,{
+            const blogResponse = await fetch(`${window.location.origin}/blog/${id}`,{
                 method: 'GET',
                 headers:{
                     'Content-Type': 'application/json'
@@ -36,7 +35,7 @@ function UpdateBlog() {
         const formData = new FormData()
         formData.append('image', blog.image)
 
-        const image = await fetch(`${url}/upload`,{
+        const image = await fetch(`${window.location.origin}/upload`,{
             method: 'POST',
             body: formData 
         })
@@ -45,7 +44,7 @@ function UpdateBlog() {
         const imageResult = imageResponse.image_url
 
 
-        const updateResponse = await fetch(`${url}/updateblog`, {
+        const updateResponse = await fetch(`${window.location.origin}/updateblog`, {
             method: 'PUT',
             headers:{
                 'Content-Type' :'application/json'

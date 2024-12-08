@@ -5,11 +5,10 @@ export const DisplayBlog = () => {
   const [blogs, setBlogs] = useState([]);
   const navigate = useNavigate();
 
-  const url = import.meta.env.VITE_BACKEND_URL;
 
   const fetchBlog = async () => {
     try {
-      const response = await fetch(`${url}/getblog`, {
+      const response = await fetch(`${window.location.origin}/getblog`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -28,7 +27,7 @@ export const DisplayBlog = () => {
 
   const handleDelete = async (id) => {
     try {
-      const deleteResposne = await fetch(`${url}/removeblog`, {
+      const deleteResposne = await fetch(`${window.location.origin}/removeblog`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

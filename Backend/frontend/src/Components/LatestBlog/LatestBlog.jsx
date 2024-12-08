@@ -4,11 +4,10 @@ import Card from '../Card/Card'
 function LatestBlog() {
 
     const [newBlog, setNewBlog] = useState([])
-    const url = import.meta.env.VITE_BACKEND_URL
 
     useEffect(() => {
       
-      fetch(`${url}/latestblog`)
+      fetch(`${window.location.origin}/latestblog`)
       .then((response)=>response.json())
       .then((data)=>setNewBlog(data))
 
