@@ -25,7 +25,7 @@ function Auth() {
   const signup = async(e) =>{
     e.preventDefault()
 
-    const signupResponse = await fetch(`${window.location.origin}/signup`,{
+    const signupResponse = await fetch(`/signup`,{
         method: 'POST',
         headers:{
             'Content-Type': 'application/json'
@@ -59,7 +59,7 @@ function Auth() {
 
   const login = async(e) => {
     e.preventDefault()
-    const logResponse = await fetch(`${window.location.origin}/login`,{
+    const logResponse = await fetch(`/login`,{
         method: 'POST',
         headers:{
             'Content-Type': 'application/json'

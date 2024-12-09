@@ -7,7 +7,7 @@ function LatestBlog() {
 
     useEffect(() => {
       
-      fetch(`${window.location.origin}/latestblog`)
+      fetch(`/latestblog`)
       .then((response)=>response.json())
       .then((data)=>setNewBlog(data))
 

@@ -15,7 +15,7 @@ const BlogPage = () => {
 
   const specificBlog = async () => {
     try {
-      const responseBlog = await fetch(`${window.location.origin}/blog/${id}`, {
+      const responseBlog = await fetch(`/blog/${id}`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -44,7 +44,7 @@ const BlogPage = () => {
 
   const displayComments = async () => {
     try {
-      const display = await fetch(`${window.location.origin}/getcomment/${id}`, {
+      const display = await fetch(`/getcomment/${id}`, {
         method: 'GET',
         headers: {
           Accept: 'application/json',
@@ -86,7 +86,7 @@ const BlogPage = () => {
     const bodyBackend = { comment: addComment, blogId: id };
     
     try {
-      const response = await fetch(`${window.location.origin}/commentblog`, {
+      const response = await fetch(`/commentblog`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -115,7 +115,7 @@ const BlogPage = () => {
 
     const token = localStorage.getItem('auth-token')
 
-    const likeBlog = await fetch(`${window.location.origin}/likeblog`,{
+    const likeBlog = await fetch(`/likeblog`,{
       method: 'POST',
       headers:{
         Authorization: `Bearer ${token}`,
@@ -141,7 +141,7 @@ const BlogPage = () => {
 
     const token = localStorage.getItem('auth-token')
 
-    const likeBlog = await fetch(`${window.location.origin}/dislikeblog`,{
+    const likeBlog = await fetch(`/dislikeblog`,{
       method: 'POST',
       headers:{
         Authorization: `Bearer ${token}`,

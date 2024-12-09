@@ -10,7 +10,7 @@ function AllBlogs() {
 
 
   const getAllBlogs = async() =>{
-    const allBlogs = await fetch(`${window.location.origin}/getblog`,{
+    const allBlogs = await fetch(`/getblog`,{
         method: 'GET',
         headers: {
             Accept: 'application/json'

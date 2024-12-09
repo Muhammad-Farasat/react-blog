@@ -8,7 +8,7 @@ export const DisplayBlog = () => {
 
   const fetchBlog = async () => {
     try {
-      const response = await fetch(`${window.location.origin}/getblog`, {
+      const response = await fetch(`/getblog`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -27,7 +27,7 @@ export const DisplayBlog = () => {
 
   const handleDelete = async (id) => {
     try {
-      const deleteResposne = await fetch(`${window.location.origin}/removeblog`, {
+      const deleteResposne = await fetch(`/removeblog`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

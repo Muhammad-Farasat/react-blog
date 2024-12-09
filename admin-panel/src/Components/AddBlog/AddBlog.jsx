@@ -30,7 +30,7 @@ export const AddBlog = () => {
 
         try {
             // Upload the image
-            const imageResponse = await fetch(`${window.location.origin}/upload`, {
+            const imageResponse = await fetch(`/upload`, {
                 method: "POST",
                 body: formData // Don't set Content-Type manually
             });
@@ -52,7 +52,7 @@ export const AddBlog = () => {
             };
 
             // Upload the blog
-            const blogResponse = await fetch(`${window.location.origin}/addblog`, {
+            const blogResponse = await fetch(`/addblog`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"
