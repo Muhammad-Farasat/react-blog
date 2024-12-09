@@ -21,10 +21,7 @@ connectToDb()
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.get("/", (req, res) => {
-  app.use(express.static(path.resolve(__dirname, "frontend",  "dist")));
-  res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
-});
+app.use(express.static(path.resolve(__dirname, "frontend",  "dist")));
 
 
 // Configure multer storage for image uploads
@@ -48,9 +45,9 @@ app.post("/upload", upload.single('image'), (req, res) => {
   const baseUrl = req.protocol + '://' + req.get('host');
   
   console.log(`${baseUrl}/images/${req.file.filename}`);
-
+  
   let imageUrl = `${baseUrl}/images/${req.file.filename}`
-
+  
   res.json({
     success: 1,
     image_url: imageUrl, // Dynamic URL
@@ -62,9 +59,9 @@ app.post("/upload", upload.single('image'), (req, res) => {
 app.use(blogRoute)
 app.use(userRoute)
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.get("/", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+});
 
 // password:- aKXvm7KISPRfNydj
 
