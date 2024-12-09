@@ -21,7 +21,7 @@ connectToDb()
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.use(express.static(path.resolve(__dirname, "frontend",  "dist")));
+app.use(express.static(path.resolve(__dirname, "dist")));
 
 
 // Configure multer storage for image uploads
@@ -60,7 +60,7 @@ app.use(blogRoute)
 app.use(userRoute)
 
 app.get("/", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+  res.sendFile(path.resolve(__dirname,  "dist", "index.html"));
 });
 
 // password:- aKXvm7KISPRfNydj

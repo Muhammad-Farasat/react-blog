@@ -23,8 +23,5 @@
   "author": "",
   "type": "module",
   "license": "ISC",
-  "description": "",
-  "engines": {
-    "node": "18.x"
-  }
+  "description": ""
 }
