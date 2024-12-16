@@ -60,7 +60,7 @@ const AdminLogin = () => {
 
   return (
     <>
-      <form onSubmit={adminLoginApi}>
+      <form >
         <div className="flex items-center justify-center h-screen bg-gray-100">
           <div className="w-full max-w-md bg-white p-8 rounded-md shadow-md">
             <h2 className="text-2xl font-bold text-center text-gray-700 mb-6">
@@ -106,6 +106,7 @@ const AdminLogin = () => {
               </div>
               <button
                 className="w-full bg-[#FF4757] text-white py-2 rounded-md hover:bg-[#E63946] transition"
+                onClick={adminLoginApi}
               >
                 Login
               </button>
