@@ -13,8 +13,8 @@ const Home = () => {
 
   return (
     <>
-      <Navbar/>
       <section className=" bg-hero bg-bottom bg-cover h-[80vh] text-center relative ">
+        <Navbar/>
         <div className="bg-[#11111188] w-full h-full absolute top-0 "></div>
         <div className="container mx-auto relative z-10 top-52 ">
           <h2 className="text-4xl font-bold text-white">

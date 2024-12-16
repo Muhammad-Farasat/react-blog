@@ -105,7 +105,7 @@ function Auth() {
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
       <div className="bg-white shadow-lg rounded-lg w-full max-w-md p-8">
-        <h2 className="text-2xl font-bold text-green-700 text-center mb-6">
+        <h2 className="text-2xl font-bold text-red-600  text-center mb-6">
           {isLogin ? "Login" : "Signup"}
         </h2>
 
@@ -122,7 +122,7 @@ function Auth() {
               onChange={change}
               value={formData.username}
                 placeholder="Enter your name"
-                className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-300 focus:border-green-400"
+                className="w-full px-4 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-[#FF4757] focus:outline-none"
                 required
               />
             </div>
@@ -139,7 +139,7 @@ function Auth() {
               onChange={change}
               value={formData.email}
               placeholder="Enter your email"
-              className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-300 focus:border-green-400"
+              className="w-full px-4 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-[#FF4757] focus:outline-none"
               required
             />
           </div>
@@ -155,13 +155,13 @@ function Auth() {
               value={formData.password}
               onChange={change}
               placeholder="Enter your password"
-              className="w-full px-4 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-green-300 focus:border-green-400 focus:outline-none "
+              className="w-full px-4 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-[#FF4757] focus:outline-none"
               required
             />
           </div>
 
           <button
-            className="w-full bg-green-600 text-white py-2 rounded-md font-semibold hover:bg-green-700 transition duration-300"
+            className="w-full bg-[#FF4757] text-white py-2 rounded-md font-semibold hover:bg-[#E63946] transition duration-300"
             onClick={(e)=> {isLogin==true ? login(e) : signup(e)}}            
           >
             {isLogin ? "Login" : "Signup"}
@@ -172,7 +172,7 @@ function Auth() {
           {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
           <span
             onClick={() => setIsLogin(!isLogin)}
-            className="text-green-700 font-semibold cursor-pointer hover:underline"
+            className="text-red-600  font-semibold cursor-pointer hover:underline"
           >
             {isLogin ? "Signup" : "Login"}
           </span>

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 
@@ -7,11 +7,29 @@ import { RxCross2 } from "react-icons/rx";
 function Navbar() {
 
   const [hamburger, setHamburger] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+  useLocation()
+
+  useEffect(()=>{
+    const handleScroll = () =>{
+      if (window.scrollY > 1) {
+        setIsScrolled(true)
+      }else{
+        setIsScrolled(false)
+      }
+
+    }
+    window.addEventListener('scroll', handleScroll)      
+    return () => window.removeEventListener('scroll', handleScroll)
+  },[])
+
+  const isHomePage = location.pathname === '/'
 
 
   return (
     <>
-      <header className="w-full bg-[#F1F2F6] text-[#2F3542] drop-shadow-lg shadow-black ">
+      <header className={`w-full transition ease-linear sticky z-20 top-0
+       ${isScrolled || !isHomePage ? ' text-[#2F3542] bg-[#F1F2F6]  drop-shadow-lg shadow-black' : 'bg-transparent text-[#f1f2f6] '}  `}>
         <div className="container mx-auto flex justify-between items-center py-4 px-6">
           <h1 className="text-2xl font-bold cursor-pointer max-sm:text-sm ">
             <Link to={"/"}> Deen-e-Islam</Link>
