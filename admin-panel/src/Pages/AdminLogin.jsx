@@ -60,7 +60,7 @@ const AdminLogin = () => {
 
   return (
     <>
-      <Form onSubmit={adminLoginApi}>
+      <form onSubmit={adminLoginApi}>
         <div className="flex items-center justify-center h-screen bg-gray-100">
           <div className="w-full max-w-md bg-white p-8 rounded-md shadow-md">
             <h2 className="text-2xl font-bold text-center text-gray-700 mb-6">
@@ -112,7 +112,7 @@ const AdminLogin = () => {
             </form>
           </div>
         </div>
-      </Form>
+      </form>
     </>
   );
 };
