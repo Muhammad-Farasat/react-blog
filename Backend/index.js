@@ -2,9 +2,9 @@ import express from 'express'
 import cloudinary from 'cloudinary'
 import multer from 'multer'
 import path from 'path'
-import connectToDb from './api/Db/connectToDb.js'
-import blogRoute from './api/Route/blog.route.js'
-import userRoute from './api/Route/auth.route.js'
+import connectToDb from './Db/connectToDb.js'
+import blogRoute from './Route/blog.route.js'
+import userRoute from './Route/auth.route.js'
 import dotenv from 'dotenv'
 import cors from 'cors'
 import { fileURLToPath } from "url";
@@ -26,7 +26,7 @@ app.use(express.static(path.resolve(__dirname,  "dist")));
 
 // Configure multer storage for image uploads
 const storage = multer.diskStorage({
-  destination: './api/upload/images', // relative path to the upload folder inside api
+  destination: './upload/images', // relative path to the upload folder inside api
   filename: (req, file, cb) => {
     cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
   }
@@ -35,7 +35,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Serve the images statically
-app.use('/images', express.static(path.resolve(__dirname, 'api', 'upload', 'images'))); // Serve the images from the upload folder
+app.use('/images', express.static(path.resolve(__dirname, 'upload', 'images'))); // Serve the images from the upload folder
 
 // Handling file upload request
 app.post("/upload", upload.single('image'), (req, res) => {
@@ -61,7 +61,7 @@ app.use(blogRoute)
 app.use(userRoute)
 
 app.get("/", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "dist", "index.html"));
+  res.json({message: 'hello world...!'})
 });
 
 // password:- aKXvm7KISPRfNydj

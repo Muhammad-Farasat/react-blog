@@ -10,12 +10,12 @@ const BlogPage = () => {
   const [blog, setBlog] = useState([]);
   const [getComments, setGetComments] = useState([]);
   const [addComment, setAddComment] = useState("");
-  
+  const backend_url = import.meta.env.VITE_BACKEND_URL  
   
 
   const specificBlog = async () => {
     try {
-      const responseBlog = await fetch(`/blog/${id}`, {
+      const responseBlog = await fetch(`${backend_url}/blog/${id}`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -44,7 +44,7 @@ const BlogPage = () => {
 
   const displayComments = async () => {
     try {
-      const display = await fetch(`/getcomment/${id}`, {
+      const display = await fetch(`${backend_url}/getcomment/${id}`, {
         method: 'GET',
         headers: {
           Accept: 'application/json',
@@ -86,7 +86,7 @@ const BlogPage = () => {
     const bodyBackend = { comment: addComment, blogId: id };
     
     try {
-      const response = await fetch(`/commentblog`, {
+      const response = await fetch(`${backend_url}/commentblog`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -115,7 +115,7 @@ const BlogPage = () => {
 
     const token = localStorage.getItem('auth-token')
 
-    const likeBlog = await fetch(`/likeblog`,{
+    const likeBlog = await fetch(`${backend_url}/likeblog`,{
       method: 'POST',
       headers:{
         Authorization: `Bearer ${token}`,
@@ -141,7 +141,7 @@ const BlogPage = () => {
 
     const token = localStorage.getItem('auth-token')
 
-    const likeBlog = await fetch(`/dislikeblog`,{
+    const likeBlog = await fetch(`${backend_url}/dislikeblog`,{
       method: 'POST',
       headers:{
         Authorization: `Bearer ${token}`,

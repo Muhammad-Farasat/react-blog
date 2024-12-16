@@ -8,9 +8,10 @@ import Footer from "../Components/Footer/Footer";
 function AllBlogs() {
   const [blogs, setBlogs] = useState([]);
 
+  const backend_url = import.meta.env.VITE_BACKEND_URL
 
   const getAllBlogs = async() =>{
-    const allBlogs = await fetch(`/getblog`,{
+    const allBlogs = await fetch(`${backend_url}/getblog`,{
         method: 'GET',
         headers: {
             Accept: 'application/json'

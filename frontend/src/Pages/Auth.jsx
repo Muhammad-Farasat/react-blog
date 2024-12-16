@@ -21,11 +21,12 @@ function Auth() {
     console.log(formData);
   }
 
+  const backend_url = import.meta.env.VITE_BACKEND_URL
 
   const signup = async(e) =>{
     e.preventDefault()
 
-    const signupResponse = await fetch(`/signup`,{
+    const signupResponse = await fetch(`${backend_url}/signup`,{
         method: 'POST',
         headers:{
             'Content-Type': 'application/json'
@@ -59,7 +60,7 @@ function Auth() {
 
   const login = async(e) => {
     e.preventDefault()
-    const logResponse = await fetch(`/login`,{
+    const logResponse = await fetch(`${backend_url}/login`,{
         method: 'POST',
         headers:{
             'Content-Type': 'application/json'

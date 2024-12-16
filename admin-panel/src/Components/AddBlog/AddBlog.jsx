@@ -9,7 +9,7 @@ export const AddBlog = () => {
         description: ""
     })
 
-
+    const backend_url = import.meta.env.VITE_BACKEND_URL
 
     const handleChange = (e) => {
         const { name, value, files } = e.target
@@ -30,7 +30,7 @@ export const AddBlog = () => {
 
         try {
             // Upload the image
-            const imageResponse = await fetch(`/upload`, {
+            const imageResponse = await fetch(`${backend_url}/upload`, {
                 method: "POST",
                 body: formData // Don't set Content-Type manually
             });
@@ -52,7 +52,7 @@ export const AddBlog = () => {
             };
 
             // Upload the blog
-            const blogResponse = await fetch(`/addblog`, {
+            const blogResponse = await fetch(`${backend_url}/addblog`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"

@@ -4,11 +4,12 @@ import { useNavigate } from "react-router-dom";
 export const DisplayBlog = () => {
   const [blogs, setBlogs] = useState([]);
   const navigate = useNavigate();
+  const backend_url = import.meta.env.VITE_BACKEND_URL
 
 
   const fetchBlog = async () => {
     try {
-      const response = await fetch(`/getblog`, {
+      const response = await fetch(`${backend_url}/getblog`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -27,7 +28,7 @@ export const DisplayBlog = () => {
 
   const handleDelete = async (id) => {
     try {
-      const deleteResposne = await fetch(`/removeblog`, {
+      const deleteResposne = await fetch(`${backend_url}/removeblog`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
