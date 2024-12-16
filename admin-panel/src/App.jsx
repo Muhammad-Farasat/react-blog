@@ -3,7 +3,7 @@ import './App.css'
 import Admin from './Pages/Admin'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import AdminLogin from './Pages/AdminLogin'
-
+import Toaster from 'react-hot-toast'
 
 function App() {
 
@@ -16,7 +16,7 @@ function App() {
           <Route path='*' element={<AdminLogin/>} />
         </Routes>
       </BrowserRouter>
-        
+      <Toaster />
     </>
   )
 }
