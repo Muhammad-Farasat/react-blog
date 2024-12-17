@@ -44,7 +44,7 @@ function Navbar() {
             </button>           
             
             
-            <div className={` z-20 absolute top-0 right-0 w-72 h-[100vh] bg-green-700 ${hamburger ? 'block' : 'hidden'} `}>
+            <div className={` z-20 absolute top-0 right-0 w-72 h-[100vh] bg-red-600 ${hamburger ? 'block' : 'hidden'} `}>
               
               <div className="flex flex-col mt-32 font-medium space-y-4 text-lg tracking-wider ">
                 <a href="/" className="mx-4 hover:underline">
