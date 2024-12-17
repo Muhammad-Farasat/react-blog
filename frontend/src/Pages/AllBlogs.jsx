@@ -29,6 +29,7 @@ function AllBlogs() {
 
   return (
     <>
+    <main className="relative">
       <Navbar/>
       <section className="py-16">
         <div className="container mx-auto">
@@ -54,6 +55,7 @@ function AllBlogs() {
         </div>
       </section>
       <Footer/>
+    </main>
     </>
   );
 }
