@@ -37,13 +37,13 @@ export const DisplayBlog = () => {
         body: JSON.stringify({ id }),
       });
 
-      setBlogs(blogs.filter((blog) => blog.id !== id));
+      setBlogs(blogs.filter((blog) => blog._id !== id));
 
       if (!deleteResposne.ok) {
         throw new error("failed to delete.");
       }
 
-      window.location.reload();
+      // window.location.reload();
     } catch (error) {
       console.error("There is error in deleting");
     }

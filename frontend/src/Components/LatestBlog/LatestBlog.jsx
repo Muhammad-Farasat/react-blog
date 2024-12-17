@@ -17,7 +17,7 @@ function LatestBlog() {
 
     return (
         <>
-            <section className="py-16">
+            <section className=" h-[100vh] py-16">
                 <div className="container mx-auto">
                     <h3 className="text-3xl text-center font-bold text-[#111827] mb-8">Latest Blogs</h3>
 

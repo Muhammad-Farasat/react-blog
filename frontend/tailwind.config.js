@@ -8,6 +8,9 @@ export default {
     extend: {
       backgroundImage:{
         hero: "url('/Image/banner.jpg')"
+      },
+      fontFamily:{
+        roboto: "roboto"
       }
     },
   },

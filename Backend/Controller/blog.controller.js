@@ -42,15 +42,15 @@ export const addBlog = async(req, res) =>{
 export const removeBlog = async(req, res) => {
     try {
 
-        // const blog = new Blog.findById({blogId})
-
-        // if (!blog) {
-        //     res.status(400).json({message: "No product to remove"})
-        // }
-
-        await Blog.findOneAndDelete(req.params._id)
-
-        res.json({message: "removed successfully."})
+        const result =  await Blog.findOneAndDelete( req.body.id );
+        if (!result) {
+            res.status(404).json({error: "blog not found..!"})
+        }
+        console.log("Removed");
+        res.json({
+        success: true,
+        name: req.body.name,
+        })
 
     } catch (error) {
         res.status(500).json({error: "Internal Error In removing Blog! "})
