@@ -166,84 +166,84 @@ const BlogPage = () => {
 
   return (
     <>
-      <Navbar />
+      <main className="relative">
+        <Navbar />
+        <div className="container mx-auto py-16 px-6">
+          {/* Blog Title */}
+          <h1 className="text-4xl font-bold text-[#2F3542] text-center">
+            {blog.title}
+          </h1>
 
-      <div className="container mx-auto py-16 px-6">
-        {/* Blog Title */}
-        <h1 className="text-4xl font-bold text-[#2F3542] text-center">
-          {blog.title}
-        </h1>
+          {/* Blog Image */}
+          <img
+            src={blog.image}
+            alt={blog.title}
+            className="w-full h-96 object-cover rounded-md mt-8"
+          />
 
-        {/* Blog Image */}
-        <img
-          src={blog.image}
-          alt={blog.title}
-          className="w-full h-96 object-cover rounded-md mt-8"
-        />
+          {/* Blog Description */}
+          <p className="mt-8 text-gray-700 text-lg">{blog.description}</p>
 
-        {/* Blog Description */}
-        <p className="mt-8 text-gray-700 text-lg">{blog.description}</p>
-
-        {/* Like/Dislike Section */}
-        <div className="flex items-center justify-start mt-8 space-x-4">
-          <button onClick={Addlike}  className="flex items-center bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition">
-            <FaThumbsUp />
-          </button>
-          <span className="text-gray-700 font-bold text-lg">
-             {blog.like || 0} 
-          </span>
-          <button onClick={AddDislike} className="flex items-center bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition">
-            <FaThumbsDown />
-          </button>
-          <span className="text-gray-700 font-bold text-lg">
-            {blog.dislike || 0} 
-          </span>
-        </div>
-
-        {/* Comments Section */}
-        <div className="mt-12">
-          <h2 className="text-2xl font-bold text-gray-800">Comments</h2>
-
-          {/* Display Comments */}
-          <div className="space-y-4 mt-6">
-          {getComments.length > 0 ? (
-            getComments.map((commentObj, index) => (
-              <div
-                key={index}
-                className="bg-gray-100 p-4 rounded-md shadow-sm border border-gray-300"
-              >
-                <p className="text-gray-700 font-bold">{commentObj.userId?.username || "Anonymous"}:</p> {/* Display username */}
-                <p className="text-gray-600">{commentObj.comment}</p> {/* Display comment */}
-              </div>
-            ))
-          ) : (
-            <p className="text-gray-500">No comments yet. Be the first to comment!</p>
-          )}
-        </div>
-
-
-          {/* Add Comment */}
-          <form className="mt-6">
-            <textarea
-              placeholder="Add your comment here..."
-              value={addComment}
-              onChange={handleCommentChange}
-              className="w-full p-4 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-300 focus:outline-none"
-              rows="4"
-              required
-            ></textarea>
-            <button
-              type="submit"
-              className="mt-4 bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition"
-              onClick={AddComment}
-            >
-              Post Comment
+          {/* Like/Dislike Section */}
+          <div className="flex items-center justify-start mt-8 space-x-4">
+            <button onClick={Addlike}  className="flex items-center bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition">
+              <FaThumbsUp />
             </button>
-          </form>
-        </div>
-      </div>
+            <span className="text-gray-700 font-bold text-lg">
+              {blog.like || 0} 
+            </span>
+            <button onClick={AddDislike} className="flex items-center bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition">
+              <FaThumbsDown />
+            </button>
+            <span className="text-gray-700 font-bold text-lg">
+              {blog.dislike || 0} 
+            </span>
+          </div>
 
-      <Footer />
+          {/* Comments Section */}
+          <div className="mt-12">
+            <h2 className="text-2xl font-bold text-gray-800">Comments</h2>
+
+            {/* Display Comments */}
+            <div className="space-y-4 mt-6">
+            {getComments.length > 0 ? (
+              getComments.map((commentObj, index) => (
+                <div
+                  key={index}
+                  className="bg-gray-100 p-4 rounded-md shadow-sm border border-gray-300"
+                >
+                  <p className="text-gray-700 font-bold">{commentObj.userId?.username || "Anonymous"}:</p> {/* Display username */}
+                  <p className="text-gray-600">{commentObj.comment}</p> {/* Display comment */}
+                </div>
+              ))
+            ) : (
+              <p className="text-gray-500">No comments yet. Be the first to comment!</p>
+            )}
+          </div>
+
+
+            {/* Add Comment */}
+            <form className="mt-6">
+              <textarea
+                placeholder="Add your comment here..."
+                value={addComment}
+                onChange={handleCommentChange}
+                className="w-full p-4 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-300 focus:outline-none"
+                rows="4"
+                required
+              ></textarea>
+              <button
+                type="submit"
+                className="mt-4 bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition"
+                onClick={AddComment}
+              >
+                Post Comment
+              </button>
+            </form>
+          </div>
+        </div>
+        <Footer />
+      </main>
     </>
   );
 };
