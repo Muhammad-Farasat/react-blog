@@ -44,26 +44,29 @@ function AllBlogs() {
             <h1 className="text-3xl font-bold text-[#111827] mb-8 text-center">
               All Blogs
             </h1>
-
-            {blogs.length === 0 ? (
-              <p className="text-center text-gray-500">No blogs available.</p>
-            ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                {loading ? (
-                  <Loader />
+            {
+              loading ? <Loader /> :
+              <>
+                {blogs.length === 0 ? (
+                  <p className="text-center text-gray-500">No blogs available.</p>
                 ) : (
-                  blogs.map((blog) => (
-                    <Card
-                      key={blog._id}
-                      title={blog.title}
-                      description={blog.description}
-                      image={blog.image}
-                      id={blog._id}
-                    />
-                  ))
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {
+                      blogs.map((blog) => (
+                        <Card
+                          key={blog._id}
+                          title={blog.title}
+                          description={blog.description}
+                          image={blog.image}
+                          id={blog._id}
+                        />
+                      ))
+                      }
+                  </div>
                 )}
-              </div>
-            )}
+              </>
+            }
+
           </div>
         </section>
 
