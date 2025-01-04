@@ -168,7 +168,7 @@ const BlogPage = () => {
     <>
       <main className="relative">
         <Navbar />
-        <div className="container h-max mx-auto py-16 px-6 ">
+        <div className="container h-auto mx-auto py-16 px-6 ">
             {/* Blog Title */}
             <h1 className="text-4xl font-bold text-[#2F3542] text-center">
               {blog.title}
