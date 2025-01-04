@@ -70,7 +70,7 @@ return (
         <div className="w-full max-w-6xl h-[100vh] mx-auto py-8">
             <h1 className="text-2xl font-bold text-[#2F3542] mb-6 text-center">Edit Blog </h1>
             
-            <form id="addBlogForm" className="space-y-4">
+            <form id="addBlogForm" className="space-y-4 px-8">
 
             <div>
                 <label htmlFor="title" className="block text-sm font-medium text-gray-600">Title</label>
