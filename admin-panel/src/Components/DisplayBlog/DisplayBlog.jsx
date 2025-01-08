@@ -38,7 +38,7 @@ export const DisplayBlog = () => {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify({ id }),
+        body: JSON.stringify( id ),
       });
 
       setBlogs(blogs.filter((blog) => blog._id !== id));
