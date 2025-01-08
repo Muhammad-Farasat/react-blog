@@ -23,7 +23,6 @@ function Admin() {
           <Route path="addblog" element={<AddBlog />}  />
           <Route path="displayblog" element={<DisplayBlog />} />
           <Route path="updateblog/:id" element={<UpdateBlog />} />
-          {/* <Route path="*" element={<Navigate to="displayblog" replace />} /> */}
         </Routes>
     </section>
   )

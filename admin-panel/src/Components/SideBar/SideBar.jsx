@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom'
 export const SideBar = () => {
   return (
     <>
-      <div className="w-[30%] h-[100vh] bg-[#F1F2F6] text-[#2F3542] drop-shadow-lg 
-        max-lg:w-[30%]  
+      <div className="w-[30%] h-[100vh] bg-[#F1F2F6] text-[#2F3542] drop-shadow-lg max-lg:w-[30%]  
         max-sm:w-full max-sm:h-auto max-sm:flex max-sm:flex-col max-sm:items-center">
         
         <p className="font-bold text-3xl text-center pt-8 

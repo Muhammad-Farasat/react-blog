@@ -50,45 +50,12 @@ app.post("/upload", upload.single('image'), (req, res) => {
   });
 });
 
-
-// const storage = multer.diskStorage({
-//   destination: '/upload/images', 
-//   filename: (req, file, cb) => {
-//     cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
-//   }
-// });
-
-// const upload = multer({ storage: storage });
-
-// app.use('/images', express.static(path.resolve(__dirname, 'upload', 'images'))); // Serve the images from the upload folder
-
-// app.post("/upload", upload.single('image'), (req, res) => {
-//   if (!req.file) {
-//     return res.status(400).json({ error: "File upload failed" });
-//   }
-
-//   const baseUrl = req.protocol + '://' + req.get('host');
-//   console.log(`${baseUrl}/images/${req.file.filename}`);
-
-//   let imageUrl = `${baseUrl}/images/${req.file.filename}`;
-
-//   res.json({
-//     success: 1,
-//     image_url: imageUrl,
-//   });
-// });
-
-
-
-
 app.use(blogRoute)
 app.use(userRoute)
 
 app.get("/", (req, res) => {
   res.json({message: 'hello world...!'})
 });
-
-// password:- aKXvm7KISPRfNydj
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

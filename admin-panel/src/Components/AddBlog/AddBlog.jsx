@@ -20,7 +20,6 @@ export const AddBlog = () => {
 
   const addBlog = async (e) => {
     e.preventDefault();
-
     
     setLoading(true);
     
