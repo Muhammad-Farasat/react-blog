@@ -38,7 +38,7 @@ export const DisplayBlog = () => {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify( id ),
+        body: JSON.stringify({ id }),
       });
 
       setBlogs(blogs.filter((blog) => blog._id !== id));
@@ -47,7 +47,7 @@ export const DisplayBlog = () => {
         throw new error("failed to delete.");
       }
 
-      // window.location.reload();
+      window.location.reload();
     } catch (error) {
       console.error("There is error in deleting");
     }
