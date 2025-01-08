@@ -42,7 +42,7 @@ export const addBlog = async(req, res) =>{
 export const removeBlog = async(req, res) => {
     try {
 
-        const result =  await Blog.findOneAndDelete( req.body.id );
+        const result =  await Blog.findOneAndDelete({ _id: req.body.id });
         if (!result) {
             res.status(404).json({error: "blog not found..!"})
         }

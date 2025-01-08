@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { Modal } from "antd";
+import Loader from '../Loader/Loader';
+
 
 function UpdateBlog() {
   
     const [blog, setBlog] = useState('')
+    const [loading, setLoading] = useState(false)
 
     const {id} = useParams()
 
@@ -31,31 +35,44 @@ function UpdateBlog() {
     const handleSave = async(e) =>{
 
         e.preventDefault()
+        
+        setLoading(true)
 
-        const formData = new FormData()
-        formData.append('image', blog.image)
+        try {
+            const formData = new FormData()
+            formData.append('image', blog.image)
+    
+            const image = await fetch(`${backend_url}/upload`,{
+                method: 'POST',
+                body: formData 
+            })
+    
+            const imageResponse = await image.json()
+            const imageResult = imageResponse.image_url
+    
+    
+            const updateResponse = await fetch(`${backend_url}/updateblog`, {
+                method: 'PUT',
+                headers:{
+                    'Content-Type' :'application/json'
+                },
+                body: JSON.stringify({...blog, image: imageResult})
+            })
+    
+            const resultResponse = await updateResponse.json()
+            setBlog(resultResponse) 
+            
+            Modal.success({
+                content: "Blog updated successfully",
+            });
 
-        const image = await fetch(`${backend_url}/upload`,{
-            method: 'POST',
-            body: formData 
-        })
-
-        const imageResponse = await image.json()
-        const imageResult = imageResponse.image_url
+        } catch (error) {
+            console.error("This is error", error);
+        }finally{
+            setLoading(false)
+        }
 
 
-        const updateResponse = await fetch(`${backend_url}/updateblog`, {
-            method: 'PUT',
-            headers:{
-                'Content-Type' :'application/json'
-            },
-            body: JSON.stringify({...blog, image: imageResult})
-        })
-
-        const resultResponse = await updateResponse.json()
-        setBlog(resultResponse) 
-
-        console.log(resultResponse);
 
     }
 
@@ -70,7 +87,7 @@ return (
         <div className="w-full max-w-6xl h-[100vh] mx-auto py-8">
             <h1 className="text-2xl font-bold text-[#2F3542] mb-6 text-center">Edit Blog </h1>
             
-            <form id="addBlogForm" className="space-y-4 px-8">
+            <form id="addBlogForm" className="space-y-4 px-8" onSubmit={handleSave} >
 
             <div>
                 <label htmlFor="title" className="block text-sm font-medium text-gray-600">Title</label>
@@ -81,7 +98,7 @@ return (
                 value={blog.title}
                 placeholder="Enter blog title"
                 onChange={(e)=>setBlog({ ...blog, title:e.target.value })}
-                className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-400"
+                className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300 focus:border-red-400"
                 required
                 />
             </div>
@@ -93,7 +110,7 @@ return (
                 id="image"
                 name="image"
                 onChange={(e)=>setBlog({ ...blog, image:e.target.files[0] })}
-                className="w-full  px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-400"
+                className="w-full  px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300 focus:border-red-400"
                 
                 />
             </div>
@@ -107,16 +124,13 @@ return (
                 placeholder="Enter blog description"
                 value={blog.description}
                 onChange={(e)=>setBlog({ ...blog, description:e.target.value })}
-                className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-400"
+                className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-300 focus:border-red-400"
                 required
                 ></textarea>
             </div>
 
-            <button
-                className="w-full bg-[#FF4757] text-white py-2 rounded-md hover:bg-[#E63946] transition duration-300"
-                onClick={handleSave}
-            >
-                Update Blog
+            <button className="w-full bg-[#FF4757] text-white py-2 rounded-md hover:bg-[#E63946] transition duration-300">
+               {loading ? <Loader/> : "Update Blog"}
             </button>
             
             </form>

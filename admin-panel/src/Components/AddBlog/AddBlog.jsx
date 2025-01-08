@@ -9,6 +9,14 @@ export const AddBlog = () => {
     description: "",
   });
 
+  const formReset = () =>{
+    setBlog({
+      title: "",
+      image: null,
+      description: "",
+     })
+}
+
   const [loading, setLoading] = useState(false);
 
   const backend_url = import.meta.env.VITE_BACKEND_URL;
@@ -24,17 +32,17 @@ export const AddBlog = () => {
     setLoading(true);
     
     try {
-        if (!blog.image) {
-          console.error("No image selected!");
-          return;
-        }
+      if (!blog.image) {
+        console.error("No image selected!");
+        return;
+      }
     
-        const formData = new FormData();
-        formData.append("image", blog.image);
-      // Upload the image
+      const formData = new FormData();
+      formData.append("image", blog.image);
+      
       const imageResponse = await fetch(`${backend_url}/upload`, {
         method: "POST",
-        body: formData, // Don't set Content-Type manually
+        body: formData, 
       });
 
       if (!imageResponse.ok) {
@@ -46,14 +54,12 @@ export const AddBlog = () => {
       const imageUrl = imageResult.image_url;
       console.log("Uploaded image URL:", imageUrl);
 
-      // Prepare blog data with uploaded image URL
       const blogData = {
         title: blog.title,
         description: blog.description,
         image: imageUrl,
       };
 
-      // Upload the blog
       const blogResponse = await fetch(`${backend_url}/addblog`, {
         method: "POST",
         headers: {
@@ -74,11 +80,17 @@ export const AddBlog = () => {
         content: "Blog added successfully",
       });
 
+      formReset()
+
+
     } catch (error) {
       console.error("Error in adding blog:", error);
     } finally {
       setLoading(false);
     }
+
+    
+
   };
 
   return (

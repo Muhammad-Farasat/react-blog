@@ -31,6 +31,7 @@ export const DisplayBlog = () => {
   };
 
   const handleDelete = async (id) => {
+    console.log("This is id from handle edit function", id);
     try {
       const deleteResposne = await fetch(`${backend_url}/removeblog`, {
         method: "POST",
@@ -47,7 +48,6 @@ export const DisplayBlog = () => {
         throw new error("failed to delete.");
       }
 
-      window.location.reload();
     } catch (error) {
       console.error("There is error in deleting");
     }
