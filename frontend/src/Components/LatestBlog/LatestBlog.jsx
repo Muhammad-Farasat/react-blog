@@ -10,7 +10,7 @@ function LatestBlog() {
   useEffect(() => {
     setLoading(true)
     try {
-        fetch(`/latestblog`)
+        fetch(`/api/latestblog`)
           .then((response) => response.json())
           .then((data) => setNewBlog(data));
     } catch (error) {

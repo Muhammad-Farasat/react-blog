@@ -11,7 +11,7 @@ export const DisplayBlog = () => {
   const fetchBlog = async () => {
     setLoading(true)
     try {
-      const response = await fetch(`/getblog`, {
+      const response = await fetch(`/api/getblog`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -33,7 +33,7 @@ export const DisplayBlog = () => {
   const handleDelete = async (id) => {
     console.log("This is id from handle edit function", id);
     try {
-      const deleteResposne = await fetch(`/removeblog`, {
+      const deleteResposne = await fetch(`/api/removeblog`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -54,7 +54,7 @@ export const DisplayBlog = () => {
   };
 
   const handleEdit = (blog, id) => {
-    const path = `/admin/updateblog/${id}`;
+    const path = `/api/admin/updateblog/${id}`;
     console.log("Navigating to:", path);
     navigate(path);
   };

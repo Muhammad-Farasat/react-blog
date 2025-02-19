@@ -52,10 +52,10 @@ app.post("/upload", upload.single('image'), (req, res) => {
   });
 });
 
-app.use(blogRoute)
-app.use(userRoute)
+app.use("/api", blogRoute)
+app.use("/api", userRoute)
 
-app.get("/test", (req, res) => {
+app.get("/api/test", (req, res) => {
   res.json({message: 'hello world...!'})
 });
 
