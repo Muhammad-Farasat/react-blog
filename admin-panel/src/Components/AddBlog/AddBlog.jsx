@@ -40,7 +40,7 @@ export const AddBlog = () => {
       const formData = new FormData();
       formData.append("image", blog.image);
       
-      const imageResponse = await fetch(`${backend_url}/upload`, {
+      const imageResponse = await fetch(`/upload`, {
         method: "POST",
         body: formData, 
       });
@@ -60,7 +60,7 @@ export const AddBlog = () => {
         image: imageUrl,
       };
 
-      const blogResponse = await fetch(`${backend_url}/addblog`, {
+      const blogResponse = await fetch(`/addblog`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

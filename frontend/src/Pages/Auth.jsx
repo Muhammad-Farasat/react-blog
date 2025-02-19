@@ -3,12 +3,14 @@ import { Button, Modal, Space } from "antd";
 import Loader from '../Components/Loader/Loader'
 
 function Auth() {
-  const [isLogin, setIsLogin] = useState(true); // Toggle between Login and Signup
+  const [isLogin, setIsLogin] = useState(true);
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
     password: "",
   });
+
   const [loading, setLoading] = useState(false);
 
   const change = (e) => {
@@ -26,11 +28,13 @@ function Auth() {
   const backend_url = import.meta.env.VITE_BACKEND_URL;
 
   const signup = async (e) => {
+
     e.preventDefault();
 
     setLoading(true);
+
     try {
-      const signupResponse = await fetch(`${backend_url}/signup`, {
+      const signupResponse = await fetch(`/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,12 +52,16 @@ function Auth() {
       };
 
       if (response.success) {
+
         window.location.replace("/");
         localStorage.setItem("auth-token", response.token);
         console.log(response);
+
       } else if (response.error === "Fill all feild..!") {
+
         error("Fill all field");
         console.log("Login failed:", response.error);
+
       } else {
         error("Something went wrong");
       }
@@ -68,7 +76,7 @@ function Auth() {
     setLoading(true);
 
     try {
-      const logResponse = await fetch(`${backend_url}/login`, {
+      const logResponse = await fetch(`/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -90,15 +98,21 @@ function Auth() {
       };
 
       if (logResponse.status === 200) {
+
         console.log("Login successful:", response);
         window.location.replace("/");
         localStorage.setItem("auth-token", response.token);
+
       } else if (response.error === "Incorrect password.") {
+
         error("Incorrect Password!");
         console.log("Login failed:", response.error);
+
       } else if (response.error === "fill all feild..!") {
+
         error("Fill all field");
         console.log("Login failed:", response.error);
+
       } else {
         error("Something went wrong");
       }
@@ -177,15 +191,15 @@ function Auth() {
           </div>
 
           {
-            loading ? <Loader/> :
-          <button
-            className="w-full bg-[#FF4757] text-white py-2 rounded-md font-semibold hover:bg-[#E63946] transition duration-300"
-            onClick={(e) => {
-              isLogin == true ? login(e) : signup(e);
-            }}
-          >
-            {isLogin ? "Login" : "Signup"}
-          </button>
+            loading ? <Loader /> :
+              <button
+                className="w-full bg-[#FF4757] text-white py-2 rounded-md font-semibold hover:bg-[#E63946] transition duration-300"
+                onClick={(e) => {
+                  isLogin == true ? login(e) : signup(e);
+                }}
+              >
+                {isLogin ? "Login" : "Signup"}
+              </button>
           }
 
 

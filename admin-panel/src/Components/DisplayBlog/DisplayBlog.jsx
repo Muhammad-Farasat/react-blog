@@ -11,7 +11,7 @@ export const DisplayBlog = () => {
   const fetchBlog = async () => {
     setLoading(true)
     try {
-      const response = await fetch(`${backend_url}/getblog`, {
+      const response = await fetch(`/getblog`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -33,7 +33,7 @@ export const DisplayBlog = () => {
   const handleDelete = async (id) => {
     console.log("This is id from handle edit function", id);
     try {
-      const deleteResposne = await fetch(`${backend_url}/removeblog`, {
+      const deleteResposne = await fetch(`/removeblog`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

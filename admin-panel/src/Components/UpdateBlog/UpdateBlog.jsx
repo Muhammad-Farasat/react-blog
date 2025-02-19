@@ -15,7 +15,7 @@ function UpdateBlog() {
 
     const fetchBlog = async() =>{
         try {            
-            const blogResponse = await fetch(`${backend_url}/blog/${id}`,{
+            const blogResponse = await fetch(`/blog/${id}`,{
                 method: 'GET',
                 headers:{
                     'Content-Type': 'application/json'
@@ -42,7 +42,7 @@ function UpdateBlog() {
             const formData = new FormData()
             formData.append('image', blog.image)
     
-            const image = await fetch(`${backend_url}/upload`,{
+            const image = await fetch(`/upload`,{
                 method: 'POST',
                 body: formData 
             })
@@ -51,7 +51,7 @@ function UpdateBlog() {
             const imageResult = imageResponse.image_url
     
     
-            const updateResponse = await fetch(`${backend_url}/updateblog`, {
+            const updateResponse = await fetch(`/updateblog`, {
                 method: 'PUT',
                 headers:{
                     'Content-Type' :'application/json'

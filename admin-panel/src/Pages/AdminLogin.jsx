@@ -15,7 +15,7 @@ const AdminLogin = () => {
     
     e.preventDefault()
     
-    const login = await fetch(`${backend_url}/adminLogin`,{
+    const login = await fetch(`/adminLogin`,{
         method: 'POST',
         headers: {
             Accept: 'application/json',

@@ -13,7 +13,7 @@ function AllBlogs() {
   const getAllBlogs = async () => {
     setLoading(true);
     try {
-      const allBlogs = await fetch(`${backend_url}/getblog`, {
+      const allBlogs = await fetch(`/getblog`, {
         method: "GET",
         headers: {
           Accept: "application/json",
