@@ -7,11 +7,13 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import cloudinary from 'cloudinary'
 import { CloudinaryStorage } from 'multer-storage-cloudinary'
+import path from 'path'
 
 
 const app = express()
 dotenv.config()
 
+const __dirname = path.resolve();
 app.use(cors())
 
 const port = process.env.PORT || 3000
@@ -53,9 +55,16 @@ app.post("/upload", upload.single('image'), (req, res) => {
 app.use(blogRoute)
 app.use(userRoute)
 
-app.get("/", (req, res) => {
+app.get("/test", (req, res) => {
   res.json({message: 'hello world...!'})
 });
+
+app.use(express.static(path.join(__dirname, '/dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
