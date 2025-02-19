@@ -12,7 +12,7 @@ function Card(props) {
   const backend_url = import.meta.env.VITE_BACKEND_URL
 
   const nav = (id) =>{
-    navigate(`/api/blog/${id}`)
+    navigate(`/blog/${id}`)
   }
 
   return (
